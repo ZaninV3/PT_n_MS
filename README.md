@@ -169,4 +169,4 @@ $$F(x) = P(X \leq x)$$
 * При $60 \leq x < 70: F(x) = 0,4 + 0,2 = 0,6$;
 * При $x \geq 70: F(x) = 0,6 + 0,4 = 1$;
 
-См. график schedule_5.py
+См. график [schedule_5.py](../../blob/main/schedule_5.py)
