@@ -1,6 +1,8 @@
+import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import norm
 
-# Данные из вариационного ряда
+# Данные из пункта 2
 intervals = [(2, 5), (5, 8), (8, 11), (11, 14), (14, 17), 
              (17, 20), (20, 23), (23, 26), (26, 29), (29, 32)]
 
@@ -21,12 +23,23 @@ for count in n_i:
 x_points = bins  # [2, 5, 8, ..., 32] - 11 точек
 y_points = [0] + [N/100 for N in N_i]  # [0, 0.03, 0.08, ..., 1] - 11 точек
 
-# Построение графика
+
+
+# Теоретическая плотность
+x = np.linspace(2, 32, 100)
+
+
+
+# Теоретическая функция
+F_x = norm.cdf(x, loc=17.45, scale=5.71)
+
+# Построение
 plt.figure(figsize=(10, 5))
 plt.step(x_points, y_points, where='post', label='$F^*(x)$')
-plt.title('Эмпирическая функция распределения')
-plt.xlabel('Значения $x$')
-plt.ylabel('$F^*(x)$')
-plt.grid(True)
+plt.plot(x, F_x, 'r-', label='Теоретическая $F(x)$')
+plt.title('Эмпирическая и теоретическая функции распределения')
+plt.xlabel('Значения')
+plt.ylabel('Вероятность')
 plt.legend()
+plt.grid()
 plt.show()
